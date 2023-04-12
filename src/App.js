@@ -1,8 +1,12 @@
 import {useEffect, useState} from "react";
 import axios from 'axios';
-import './App.css';
 
+import {Routes, Route} from 'react-router-dom';
 import { SigninComponent } from "./components/SigninComponent";
+import './App.css';
+import { UserLogsComponent } from "./components/UserLogsComponent";
+
+
 
 function App() {
   const [token, setToken] =useState("");
@@ -13,12 +17,18 @@ function App() {
         Authorization: `Bearer ${token}`
       }
     }).then((response)=> console.log(response))
-  },[])
+  },[token])
 
 
   return (
     <div className="App">
-     <SigninComponent setToken={setToken}/>
+       <Routes>
+            <Route exact path="/" element={<SigninComponent setToken={setToken}/>} />
+            <Route path="/userlogs" element={<UserLogsComponent/>} />
+  
+            
+        </Routes>
+     
     </div>
   );
 }
