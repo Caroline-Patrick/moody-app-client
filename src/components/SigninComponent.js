@@ -1,20 +1,15 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export const SigninComponent = (props) => {
  
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    
 
-    useEffect(()=>{
-        console.log(email)
-    }, [email])
+    const navigate = useNavigate();
 
-    useEffect(()=>{
-        console.log(password)
-    }, [password])
   return (
     <>
         <form 
@@ -26,8 +21,11 @@ export const SigninComponent = (props) => {
                 {email,
                 password}
                 ).then((response)=>{
-                    console.log(response.data)
-                    props.setToken(response.data.token)})
+                    console.log( response)
+                    props.setToken(response.data.token)
+                    props.setUserId(response.data.user.userId)})
+                    navigate("/userLogs")
+
             }}
         >
 

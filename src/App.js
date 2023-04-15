@@ -1,31 +1,24 @@
-import {useEffect, useState} from "react";
-import axios from 'axios';
-
+import { useState} from "react";
 import {Routes, Route} from 'react-router-dom';
-import { SigninComponent } from "./components/SigninComponent";
-import './App.css';
-import { UserLogsComponent } from "./components/UserLogsComponent";
 
+import { SigninComponent } from "./components/SigninComponent";
+import { UserLogsComponent } from "./components/UserLogsComponent";
+import {MoodsComponent} from "./components/MoodsComponent"
+import './App.css';
 
 
 function App() {
   const [token, setToken] =useState("");
-
-  useEffect(()=>{
-    axios.get("http://localhost:5000/users", {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).then((response)=> console.log(response))
-  },[token])
+  const [userId, setUserId] = useState(null);
 
 
   return (
     <div className="App">
        <Routes>
-            <Route exact path="/" element={<SigninComponent setToken={setToken}/>} />
-            <Route path="/userlogs" element={<UserLogsComponent/>} />
-  
+            <Route exact path="/" element={<SigninComponent setToken={setToken} setUserId={setUserId}/>} />
+            <Route path="/userlogs" element={<UserLogsComponent token={token} userId={userId} setUserId={setUserId}/>} />
+            <Route path="/log" element={<MoodsComponent token={token} />} />
+
             
         </Routes>
      
