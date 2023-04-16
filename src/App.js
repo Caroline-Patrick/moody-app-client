@@ -4,6 +4,7 @@ import {Routes, Route} from 'react-router-dom';
 import { SigninComponent } from "./components/SigninComponent";
 import { UserLogsComponent } from "./components/UserLogsComponent";
 import {MoodsComponent} from "./components/MoodsComponent"
+import {EmotionWheel} from "./components/EmotionWheel";
 import './App.css';
 
 
@@ -21,7 +22,7 @@ function App() {
 
             
         </Routes>
-     
+     <EmotionWheel />
     </div>
   );
 }

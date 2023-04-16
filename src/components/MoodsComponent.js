@@ -24,7 +24,7 @@ export const MoodsComponent = ({token}) => {
   {moodNames.map((mood, index)=>{
     return(
       <li className="item" key={`userlog-${index}`}>
-        {`${mood.moodName}` }
+        {<button>{mood.moodName}</button> }
       </li>
     )
   })}
@@ -36,3 +36,4 @@ export const MoodsComponent = ({token}) => {
     </div>
   </>  )
 }
+
