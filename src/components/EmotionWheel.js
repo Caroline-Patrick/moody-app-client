@@ -9,7 +9,7 @@ import { LogFormComponent } from "./LogFormComponent";
 
 am4core.useTheme(am4themes_animated);
 
-export const EmotionWheel = () => {
+export const EmotionWheel = ({token, userId}) => {
   const chartRef = useRef(null);
 
   const [formVisible, setFormVisible] = useState(false);
@@ -22,7 +22,7 @@ export const EmotionWheel = () => {
 
   };
 
-
+  console.log(`Token: ${token}, userId: ${userId}`)
 
   useEffect(() => {
     if (emotionList) {
@@ -75,14 +75,14 @@ export const EmotionWheel = () => {
   }, [emotionList]);
 
   return (
-    <div
-      id="chartdiv"
-      style={{ width: "100%", height: "1000px" }}
-    >
+    <div style={{ display: "flex", flexDirection: "row" }}>
+      <div id="chartdiv" style={{ width: "80%", height: "700px" }}></div>
       <LogFormComponent
         visible={formVisible}
         data={selectedChartData}
         onHide={() => setFormVisible(false)}
+        token={token}
+        userId={userId}
       />
     </div>
   );

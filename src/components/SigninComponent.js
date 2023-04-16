@@ -24,7 +24,7 @@ export const SigninComponent = (props) => {
                     console.log( response)
                     props.setToken(response.data.token)
                     props.setUserId(response.data.user.userId)})
-                    navigate("/userLogs")
+                    navigate("/log")
 
             }}
         >

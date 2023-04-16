@@ -18,13 +18,14 @@ function App() {
        <Routes>
             <Route exact path="/" element={<SigninComponent setToken={setToken} setUserId={setUserId}/>} />
             <Route path="/userlogs" element={<UserLogsComponent token={token} userId={userId} setUserId={setUserId}/>} />
-            <Route path="/log" element={<MoodsComponent token={token} />} />
+            <Route path="/log" element={<EmotionWheel token={token} userId={userId}/>} />
 
             
         </Routes>
-     <EmotionWheel />
+    
     </div>
   );
 }
+
 
 export default App;
