@@ -1,9 +1,14 @@
 import React, { useRef, useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import * as am4plugins_sunburst from "@amcharts/amcharts4/plugins/sunburst";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import emotionList from "../emotionList";
+import { Button } from '@mui/material';
+import axios from 'axios';
+
+
 
 import { LogFormComponent } from "./LogFormComponent";
 
@@ -11,7 +16,7 @@ am4core.useTheme(am4themes_animated);
 
 export const EmotionWheel = ({token, userId}) => {
   const chartRef = useRef(null);
-
+  const navigate = useNavigate();
   const [formVisible, setFormVisible] = useState(false);
   const [selectedChartData, setSelectedChartData] = useState(null);
 
@@ -22,7 +27,10 @@ export const EmotionWheel = ({token, userId}) => {
 
   };
 
-  console.log(`Token: ${token}, userId: ${userId}`)
+  const handleUserLogsClick = ()=>{
+    navigate("/userlogs")
+  };
+  
 
   useEffect(() => {
     if (emotionList) {
@@ -84,6 +92,7 @@ export const EmotionWheel = ({token, userId}) => {
         token={token}
         userId={userId}
       />
+      <Button onClick={handleUserLogsClick}>View Logs</Button>
     </div>
   );
 };

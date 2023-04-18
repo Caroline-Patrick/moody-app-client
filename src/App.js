@@ -1,10 +1,11 @@
 import { useState} from "react";
 import {Routes, Route} from 'react-router-dom';
-
+import { ResponsiveAppBar } from "./components/ResponsiveAppBar";
 import { SigninComponent } from "./components/SigninComponent";
-import { UserLogsComponent } from "./components/UserLogsComponent";
+import { UserLogsListComponent } from "./components/UserLogsListComponent";
 import {MoodsComponent} from "./components/MoodsComponent"
 import {EmotionWheel} from "./components/EmotionWheel";
+
 import './App.css';
 
 
@@ -15,9 +16,10 @@ function App() {
 
   return (
     <div className="App">
+      <ResponsiveAppBar/>
        <Routes>
             <Route exact path="/" element={<SigninComponent setToken={setToken} setUserId={setUserId}/>} />
-            <Route path="/userlogs" element={<UserLogsComponent token={token} userId={userId} setUserId={setUserId}/>} />
+            <Route path="/userlogs" element={<UserLogsListComponent token={token} userId={userId} setUserId={setUserId}/>} />
             <Route path="/log" element={<EmotionWheel token={token} userId={userId}/>} />
 
             

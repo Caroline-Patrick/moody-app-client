@@ -26,4 +26,25 @@ body {
 }
 
 
+ 
+
+body {
+  padding: 20px;
+  /* background-color: #263238; */
+
+}
+h2 {
+  align-items: center;
+}
+.list {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 40px;
+  
+}
+
+.log {
+  list-style: none;
+
+}
 
