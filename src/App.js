@@ -3,8 +3,8 @@ import {Routes, Route} from 'react-router-dom';
 import { ResponsiveAppBar } from "./components/ResponsiveAppBar";
 import { SigninComponent } from "./components/SigninComponent";
 import { UserLogsListComponent } from "./components/UserLogsListComponent";
-import {MoodsComponent} from "./components/MoodsComponent"
 import {EmotionWheel} from "./components/EmotionWheel";
+import { UserLog } from "./components/UserLog";
 
 import './App.css';
 
@@ -21,7 +21,7 @@ function App() {
             <Route exact path="/" element={<SigninComponent setToken={setToken} setUserId={setUserId}/>} />
             <Route path="/userlogs" element={<UserLogsListComponent token={token} userId={userId} setUserId={setUserId}/>} />
             <Route path="/log" element={<EmotionWheel token={token} userId={userId}/>} />
-
+            <Route path="/userlog" element={<UserLog token={token} userId={userId}/>} />
             
         </Routes>
     

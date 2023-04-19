@@ -1,13 +1,18 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Container, Button, TextField, Box, Card, CardContent, Typography } from '@mui/material';
+import { Container, Button, TextField, Card, CardContent, Typography } from '@mui/material';
 import axios from 'axios';
 
-export const LogFormComponent = ({ visible, data, onHide, token, userId }) => {
+export const LogFormComponent = ({ visible, data, onHide, token, userId, log, onCancel}) => {
   const [description, setDescription] = useState('');
   const [userNotes, setUserNotes] = useState('');
+  const [formData, setFormData] = useState({
+    subsubMoodName: log?.subsubMoodName || "",
+    userNotes: log?.userNotes || ""
+  
+  });
 
-  const moodName = data ? data.name : '';
+  const moodName = log ? log.subsubMoodName : data ? data.name : "";
 
    console.log(`Token: ${token}, userId: ${userId}, ${moodName}`)
 
@@ -31,22 +36,32 @@ export const LogFormComponent = ({ visible, data, onHide, token, userId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`http://localhost:5000/userLogs/create/${userId}/${moodName}`,{
-        userNotes
-    }, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }).then((response)=>{
-        console.log(response.data)
-      }).catch((error)=> {
-        console.log(error)
-      });
-      setUserNotes("")
-    onHide();
+    if (data) {
+      axios
+        .post(
+          `http://localhost:5000/userLogs/create/${userId}/${moodName}`,
+          {
+            userNotes,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      setUserNotes("");
+      onHide();
+    }
   };
 
-  if (!visible) {
+  if (!visible) { 
+    {console.log("it's not visible")}
     return null;
   }
 
@@ -79,12 +94,13 @@ export const LogFormComponent = ({ visible, data, onHide, token, userId }) => {
         <br></br>
         <div>
           <Button variant="contained" type="submit">
-            Submit
+            Save
           </Button>
         
         <Button variant="contained" onClick={onHide}>
           Close
         </Button>
+        {onCancel && <button onClick={onCancel}>Cancel</button>}
         </div>
         </form>
         </CardContent>
