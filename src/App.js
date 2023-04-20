@@ -1,5 +1,6 @@
 import { useState} from "react";
 import {Routes, Route} from 'react-router-dom';
+import AuthContext from "./AuthContext";
 import { ResponsiveAppBar } from "./components/ResponsiveAppBar";
 import { SigninComponent } from "./components/SigninComponent";
 import { UserLogsListComponent } from "./components/UserLogsListComponent";
@@ -16,15 +17,16 @@ function App() {
 
   return (
     <div className="App">
+     <AuthContext.Provider value={{ token, userId, setToken, setUserId }}>
       <ResponsiveAppBar/>
        <Routes>
-            <Route exact path="/" element={<SigninComponent setToken={setToken} setUserId={setUserId}/>} />
-            <Route path="/userlogs" element={<UserLogsListComponent token={token} userId={userId} setUserId={setUserId}/>} />
-            <Route path="/log" element={<EmotionWheel token={token} userId={userId}/>} />
-            <Route path="/userlog" element={<UserLog token={token} userId={userId}/>} />
+            <Route exact path="/" element={<SigninComponent />} />
+            <Route path="/userlogs" element={<UserLogsListComponent />} />
+            <Route path="/log" element={<EmotionWheel />} />
+            <Route path="/userlog" element={<UserLog />} />
             
         </Routes>
-    
+        </AuthContext.Provider>
     </div>
   );
 }

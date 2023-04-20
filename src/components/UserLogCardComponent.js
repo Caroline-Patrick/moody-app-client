@@ -1,8 +1,7 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
+import React, {useContext} from "react";
+import AuthContext from "../AuthContext";
+import {Card, CardHeader, Container }from "@mui/material";
 import { blueGrey } from "@mui/material/colors";
-import Container from "@mui/material/Container";
 
 //change date + time into more readable format
 const formatDate = (createDate, createTime) => {
@@ -20,7 +19,8 @@ const formatDate = (createDate, createTime) => {
   return new Intl.DateTimeFormat("en-US", options).format(date);
 };
 
-export const UserLogCardComponent = ({ userId, log, token, onClick }) => {
+export const UserLogCardComponent = ({ log, onClick }) => {
+  const { token, userId} = useContext(AuthContext);
   const handleClick = (selectedLog) => {
     onClick(log);
   };

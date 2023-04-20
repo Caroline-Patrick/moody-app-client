@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import AuthContext from "../AuthContext";
 import { UserLogCardComponent } from "./UserLogCardComponent";
 import { UserLog } from "./UserLog";
 
-export const UserLogsListComponent = ({ token, userId }) => {
+export const UserLogsListComponent = () => {
+  const { token, userId } = useContext(AuthContext);
   const [userLogs, setUserLogs] = useState([]);
   const [selectedLog, setSelectedLog] = useState(null);
+  const [refreshData, setRefreshData] = useState(false);
 
   const handleClick = (selectedLog) => {
     setSelectedLog(selectedLog);
@@ -13,6 +16,7 @@ export const UserLogsListComponent = ({ token, userId }) => {
 
   const handleBackClick = () => {
     setSelectedLog(null);
+    setRefreshData((prevState) => !prevState);
   };
 
   useEffect(() => {
@@ -33,7 +37,7 @@ export const UserLogsListComponent = ({ token, userId }) => {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [refreshData]);
 
   if (selectedLog) {
     return <UserLog selectedLog={selectedLog} onBackClick={handleBackClick} />;
@@ -47,9 +51,7 @@ export const UserLogsListComponent = ({ token, userId }) => {
                 return (
                   <li className="log" key={`userlog-${index}`}>
                     <UserLogCardComponent
-                      userId={userId}
                       log={log}
-                      token={token}
                       onClick={handleClick}
                     />
                   </li>

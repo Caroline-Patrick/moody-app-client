@@ -1,20 +1,17 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
+import AuthContext from "../AuthContext";
+import { LogFormComponent } from "./LogFormComponent";
 import { useNavigate } from 'react-router-dom';
+import emotionList from "../emotionList";
 import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
 import * as am4plugins_sunburst from "@amcharts/amcharts4/plugins/sunburst";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import emotionList from "../emotionList";
 import { Button } from '@mui/material';
-import axios from 'axios';
-
-
-
-import { LogFormComponent } from "./LogFormComponent";
 
 am4core.useTheme(am4themes_animated);
 
-export const EmotionWheel = ({token, userId}) => {
+export const EmotionWheel = () => {
+  const { token, userId} = useContext(AuthContext);
   const chartRef = useRef(null);
   const navigate = useNavigate();
   const [formVisible, setFormVisible] = useState(false);
@@ -42,7 +39,7 @@ export const EmotionWheel = ({token, userId}) => {
       chart.colors.step = 2;
       chart.fontSize = 14;
 
-      //   chart.innerRadius = am4core.percent(20);
+  
 
       // Define data fields
       chart.dataFields.value = "value";
@@ -53,7 +50,7 @@ export const EmotionWheel = ({token, userId}) => {
 
       let level0SeriesTemplate = new am4plugins_sunburst.SunburstSeries();
       level0SeriesTemplate.hiddenInLegend = false;
-      //   chart.seriesTemplates.setKey('0', level0SeriesTemplate);
+   
 
       var level0 = chart.seriesTemplates.create("0");
       var level1 = chart.seriesTemplates.create("1");
@@ -71,9 +68,6 @@ export const EmotionWheel = ({token, userId}) => {
       level2.slices.template.tooltipText = "";
       level2.slices.template.events.on("hit", handleSliceClick);
 
-      //   chart.legend = new am4charts.Legend();
-      //   chart.legend.labels.template.text = '{name}';
-      //   chart.legend.valueLabels.template.text = '{value}';
 
       chartRef.current = chart;
       return () => {

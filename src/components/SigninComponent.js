@@ -1,10 +1,10 @@
-import React from 'react';
-import {useState} from 'react';
-import axios from 'axios';
+import React, {useState, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import AuthContext from "../AuthContext";
 
-export const SigninComponent = (props) => {
- 
+export const SigninComponent = () => {
+    const { token, userId, setToken, setUserId } = useContext(AuthContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -22,8 +22,8 @@ export const SigninComponent = (props) => {
                 password}
                 ).then((response)=>{
                     console.log( response)
-                    props.setToken(response.data.token)
-                    props.setUserId(response.data.user.userId)})
+                    setToken(response.data.token)
+                   setUserId(response.data.user.userId)})
                     navigate("/log")
 
             }}

@@ -1,20 +1,25 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { Container, Button, TextField, Card, CardContent, Typography } from '@mui/material';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import AuthContext from '../AuthContext';
+import { Container, Button, TextField, Card, CardContent, Typography } from '@mui/material';
 
-export const LogFormComponent = ({ visible, data, onHide, token, userId, log, onCancel}) => {
+
+export const LogFormComponent = ({ visible, data, onHide, log, onCancel, editIsClicked, onUpdate}) => {
+  const { token, userId} = useContext(AuthContext);
+
   const [description, setDescription] = useState('');
   const [userNotes, setUserNotes] = useState('');
   const [formData, setFormData] = useState({
     subsubMoodName: log?.subsubMoodName || "",
-    userNotes: log?.userNotes || ""
+    userNotes: log?.userNotes || "",
+    logId: log?.logId || ""
   
   });
 
   const moodName = log ? log.subsubMoodName : data ? data.name : "";
 
    console.log(`Token: ${token}, userId: ${userId}, ${moodName}`)
+   console.log(`log: ${formData.subsubMoodName}, userId: ${userId}, ${moodName}`)
 
 
   
@@ -32,7 +37,15 @@ export const LogFormComponent = ({ visible, data, onHide, token, userId, log, on
     }
   }, [visible, moodName]);
 
-
+const handleClick =(e) => {
+  e.preventDefault();
+  console.log("Edit is clicked?: " + editIsClicked)
+  if(editIsClicked === true) {
+    handleEditClick(e);
+  } else {
+    handleSubmit(e)
+  }
+}
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,6 +73,32 @@ export const LogFormComponent = ({ visible, data, onHide, token, userId, log, on
     }
   };
 
+  const handleEditClick = (e) => {
+    e.preventDefault();
+   
+      axios
+        .put(
+          `http://localhost:5000/userLogs/${userId}/${formData.logId}`,
+          {
+            userNotes,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response.data);
+          onUpdate();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      onHide();
+    
+  };
+
   if (!visible) { 
     {console.log("it's not visible")}
     return null;
@@ -78,13 +117,13 @@ export const LogFormComponent = ({ visible, data, onHide, token, userId, log, on
       </Typography>
         <br></br>
        
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleClick}>
         <TextField
           id="outlined-multiline-static"
           label="What's happening?"
           multiline
           rows={4}
-          defaultValue=""
+         defaultValue={formData.userNotes}
           onChange={((e)=>{
             setUserNotes(e.target.value)
           })}
@@ -97,10 +136,9 @@ export const LogFormComponent = ({ visible, data, onHide, token, userId, log, on
             Save
           </Button>
         
-        <Button variant="contained" onClick={onHide}>
-          Close
-        </Button>
-        {onCancel && <button onClick={onCancel}>Cancel</button>}
+          {onCancel && <button onClick={onCancel}>Cancel</button>}
+
+      
         </div>
         </form>
         </CardContent>

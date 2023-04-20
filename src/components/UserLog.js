@@ -1,14 +1,9 @@
-import React, {useState} from "react";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
+import React, {useState, useContext} from "react";
+import AuthContext from "../AuthContext";
+import {Card, CardHeader, CardContent, Typography, Container, Button, Box }from "@mui/material";
 import { blueGrey } from "@mui/material/colors";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
 
 import { LogFormComponent } from "./LogFormComponent";
 
@@ -28,8 +23,9 @@ const formatDate = (createDate, createTime) => {
   return new Intl.DateTimeFormat("en-US", options).format(date);
 };
 
-export const UserLog = ({ userId, token, selectedLog, onBackClick }) => {
+export const UserLog = ({selectedLog, onBackClick }) => {
   const [editIsClicked, setEditIsClicked] = useState(false);
+  const { token, userId} = useContext(AuthContext);
 
   const handleEditClick = () => {
     setEditIsClicked(true);
@@ -41,8 +37,9 @@ export const UserLog = ({ userId, token, selectedLog, onBackClick }) => {
         visible={editIsClicked}
         log={selectedLog}
         onCancel={() => setEditIsClicked(false)}
-        token={token}
-        userId={userId}
+        editIsClicked={editIsClicked}
+        onHide={() => setEditIsClicked(false)}
+        onUpdate={()=> onBackClick()}
       />
     );
   } else {
