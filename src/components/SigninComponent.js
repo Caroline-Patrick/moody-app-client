@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from "../AuthContext";
 
+
 export const SigninComponent = () => {
-    const { token, userId, setToken, setUserId } = useContext(AuthContext);
+    const { setToken, setUserId, setSignedIn, setUserName } = useContext(AuthContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -23,7 +24,10 @@ export const SigninComponent = () => {
                 ).then((response)=>{
                     console.log( response)
                     setToken(response.data.token)
-                   setUserId(response.data.user.userId)})
+                    setUserId(response.data.user.userId)
+                    setUserName(response.data.user.firstName)
+                })
+                    setSignedIn(true)
                     navigate("/log")
 
             }}
