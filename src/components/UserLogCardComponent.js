@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import AuthContext from "../AuthContext";
-import {Card, CardHeader, Container }from "@mui/material";
+import {Card, CardHeader, Container, CardContent, Typography }from "@mui/material";
 import { blueGrey } from "@mui/material/colors";
 
 //change date + time into more readable format
@@ -35,6 +35,9 @@ export const UserLogCardComponent = ({ log, onClick }) => {
           subheader={formatDate(log.createDate, log.createTime)} // Use formatDate to format the date and time
           title={`Mood: ${log.subsubMoodName}`}
         />
+         <CardContent>
+          <Typography paragraph>See more</Typography>
+        </CardContent>
       </Card>
     </Container>
   );

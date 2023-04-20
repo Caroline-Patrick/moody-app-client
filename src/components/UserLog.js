@@ -1,4 +1,5 @@
 import React, {useState, useContext} from "react";
+import axios from 'axios';
 import AuthContext from "../AuthContext";
 import {Card, CardHeader, CardContent, Typography, Container, Button, Box }from "@mui/material";
 import { blueGrey } from "@mui/material/colors";
@@ -30,6 +31,24 @@ export const UserLog = ({selectedLog, onBackClick }) => {
   const handleEditClick = () => {
     setEditIsClicked(true);
   };
+
+  const handleDeleteClick =()=>{
+    axios
+      .delete(`http://localhost:5000/userLogs/${userId}/${selectedLog.logId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      })
+      .then((response) => {
+        console.log("made it to delete");
+        console.log(response);
+        onBackClick()
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
 
   if (editIsClicked) {
     return (
@@ -68,7 +87,7 @@ export const UserLog = ({selectedLog, onBackClick }) => {
             right: 10,
           }}
         >
-          <DeleteIcon />
+          <DeleteIcon onClick={handleDeleteClick}/>
         </Box>
       </Card>
       <Button onClick={onBackClick}>Back to all logs</Button>
