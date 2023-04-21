@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-  background-color: #1B2633;
+  background-color: #047C89;
   background-image: radial-gradient( circle at bottom, white, transparent 70%);
   background-repeat: no-repeat;
   background-position: bottom;
@@ -20,22 +20,28 @@ body {
   height: 400px;
 }
 
-
  
 
-body {
-  padding: 20px;
-  /* background-color: #263238; */
 
-}
 h2 {
   align-items: center;
 }
 .list {
   display: grid;
   grid-template-columns: repeat(3,1fr);
-  gap: 40px;
+  gap: 5vh;
   
+}
+
+.emotion-wheel-container {
+  display: flex;
+  margin-top: 5vh;
+}
+
+.log-form-container {
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .log {
@@ -49,6 +55,7 @@ h2 {
   align-items: center;
   margin-top: 10vh;
 }
+
 
 .card-wrapper {
   margin-left: 5vh;
@@ -75,4 +82,43 @@ h2 {
 
 .log-history-button {
   color: whitesmoke
+}
+
+.link {
+  color: white
+}
+
+/* Change the color of the TextField label */
+.signin-textfield .MuiInputLabel-root {
+  color: white;
+}
+
+/* Change the color of the TextField input text */
+.signin-textfield .MuiInputBase-input {
+  color: white;
+}
+
+/* Change the color of the TextField outline */
+.signin-textfield .MuiOutlinedInput-notchedOutline {
+  border-color: white;
+}
+
+/* Change the color of the TextField outline when focused */
+.signin-textfield .Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: white;
+}
+
+/* Change the color of the TextField label when focused */
+.signin-textfield .Mui-focused .MuiInputLabel-root {
+  color: white;
+}
+
+/* Change the color of the TextField outline when hovered */
+.signin-textfield:hover .MuiOutlinedInput-notchedOutline {
+  border-color: green;
+}
+
+/* Change the color of the TextField outline when focused and hovered */
+.signin-textfield.Mui-focused:hover .MuiOutlinedInput-notchedOutline {
+  border-color: white;
 }

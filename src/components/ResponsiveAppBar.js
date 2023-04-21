@@ -141,7 +141,7 @@ const handleMenuItemClick = (event, page) => {
               <Button
                 key={page}
                 onClick={(event)=>handleMenuItemClick(event, page)}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'white', display: 'block', backgroundColor: 'transparent'}}
               >
                 {page}
               </Button>
@@ -151,7 +151,7 @@ const handleMenuItemClick = (event, page) => {
               <Button
                 key={page}
                 onClick={(event)=>handleMenuItemClick(event, page)}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'white', display: 'block', backgroundColor: 'transparent'}}
               >
                 {page}
               </Button>

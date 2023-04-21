@@ -10,6 +10,8 @@ import { UserLog } from "./components/UserLog";
 import './App.css';
 import { ThemeProvider } from "@mui/material";
 import myTheme from "./theme/theme"
+import { SigninComponent } from "./components/SigninComponent";
+import { SignUpComponent } from "./components/SignUpComponent";
 
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
             <Route path="/userlogs" element={<UserLogsListComponent />} />
             <Route path="/log" element={<EmotionWheel />} />
             <Route path="/userlog" element={<UserLog />} />
+            <Route path="/signin" element={<SigninComponent />} />
+            <Route path="/signup" element={<SignUpComponent />} />
             
         </Routes>
         </AuthContext.Provider>

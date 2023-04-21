@@ -2,7 +2,6 @@ import React, {useState, useContext} from "react";
 import axios from 'axios';
 import AuthContext from "../AuthContext";
 import {Card, CardHeader, CardContent, Typography, Container, Button, Box }from "@mui/material";
-import { blueGrey } from "@mui/material/colors";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -63,8 +62,20 @@ export const UserLog = ({selectedLog, onBackClick }) => {
     );
   } else {
   return (
-    <Container>
-      <Card sx={{ maxWidth: 900, bgcolor: selectedLog.color, position: "relative" }}>
+    <Container sx={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      minHeight: "25vh", // To make the container take up at least the full viewport height
+    }}>
+      <Card sx={{
+       
+       width: "90%",
+        marginTop: 5,
+        bgcolor: selectedLog.color,
+        position: "relative",
+      }}>
         <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
           <EditIcon onClick={handleEditClick}/>
         </Box>
@@ -90,7 +101,7 @@ export const UserLog = ({selectedLog, onBackClick }) => {
           <DeleteIcon onClick={handleDeleteClick}/>
         </Box>
       </Card>
-      <Button onClick={onBackClick}>Back to all logs</Button>
+      <Button sx={{}} onClick={onBackClick}>Back to all logs</Button>
     </Container>
   );
 };

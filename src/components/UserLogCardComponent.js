@@ -1,5 +1,4 @@
-import React, {useContext} from "react";
-import AuthContext from "../AuthContext";
+import React from "react";
 import {Button, Card, CardHeader, Container, CardContent }from "@mui/material";
 
 //change date + time into more readable format

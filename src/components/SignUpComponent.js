@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import mLogo from '../images/mLogoLongWhiteText.svg'
 import mBlackLogo from '../images/moodyLogoOG.svg'
 
 import {
@@ -18,6 +17,7 @@ export const SignUpComponent = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -25,6 +25,10 @@ export const SignUpComponent = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
     setError(""); // Clear previous error messages
     axios
       .post("http://localhost:5000/signup", { firstName, lastName, email, password })
@@ -87,8 +91,19 @@ export const SignUpComponent = () => {
                 required
                 id="outlined-basic"
                 label="Password"
+                type="password"
                 onChange={(e) => {
                   setPassword(e.target.value);
+                }}
+              />
+              <br></br> <br></br>
+              <TextField
+                required
+                id="outlined-basic"
+                label="Confirm Password"
+                type="password"
+                onChange={(e) => {
+                  setConfirmPassword(e.target.value);
                 }}
               />
               <br></br>

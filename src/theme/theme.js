@@ -27,6 +27,13 @@ export const myTheme = createTheme({
         },
       },
     },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#000000",
+        }
+      }
+    }
   },
   
 });

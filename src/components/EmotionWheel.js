@@ -71,9 +71,10 @@ export const EmotionWheel = () => {
   }, [emotionList]);
 
   return (
-    <div style={{ display: "flex", flexDirection: "row" }}>
+    <div className="emotion-wheel-container" style={{ display: "flex", flexDirection: "row" }}>
       <div id="chartdiv" style={{ width: "80%", height: "700px" }}></div>
       <LogFormComponent
+        className="log-form-container"
         visible={formVisible}
         data={selectedChartData}
         onHide={() => setFormVisible(false)}

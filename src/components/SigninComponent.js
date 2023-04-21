@@ -1,7 +1,12 @@
 import React, {useState, useContext} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from "../AuthContext";
+import {
+    Button,
+    TextField,
+    Typography,
+  } from "@mui/material";
 
 
 export const SigninComponent = () => {
@@ -32,18 +37,34 @@ export const SigninComponent = () => {
 
             }}
         >
-
-        <label className='label'>
-            Email:
-            <input className='input' type='email' value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
-        </label>
-        <label className='label'>
-            Password:
-            <input className='input' type='password' value={password} onChange={(e)=>{setPassword(e.target.value)}} />
-        </label>
-            <input type="submit" value="Sign in"/>
-
+            <TextField
+                required
+                className="signin-textfield"
+                id="outlined-basic"
+                label="Email"
+                value={email}
+                onChange={(e) => {setEmail(e.target.value)}}
+              />
+              
+              <TextField
+                required
+                className="signin-textfield"
+                id="outlined-basic"
+                label="Password"
+                value={password}
+                onChange={(e) => {setPassword(e.target.value)}}
+                type="password"
+              />
+             
+                <Button
+                  variant="contained"
+                  type="submit"
+                >
+                  Sign In
+                </Button>
+            
         </form>
+        <Typography >New around here? <Link className= "link" to="/signup">Create an account!</Link></Typography>
     </>
   )
 }
