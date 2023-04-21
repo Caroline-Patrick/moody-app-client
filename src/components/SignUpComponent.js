@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import mLogo from '../images/mLogoLongWhiteText.svg'
+import mBlackLogo from '../images/moodyLogoOG.svg'
 
 import {
   Container,
@@ -44,7 +46,8 @@ export const SignUpComponent = () => {
     <div className="signup-form-container">
       <Container>
         <Card>
-          <CardContent>
+        <div className="card-wrapper">
+          <CardContent className="card-content">
           {error && (
               <Typography color="error" align="center">
                 {error}
@@ -99,8 +102,15 @@ export const SignUpComponent = () => {
                 </Button>
               </div>
             </form>
+            
           </CardContent>
+          <div className="image-container">
+          <img className="card-image" src={mBlackLogo} />
+          </div>
+        </div>
+
         </Card>
+       
       </Container>
     </div>
   );

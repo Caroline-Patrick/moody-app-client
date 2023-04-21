@@ -1,5 +1,6 @@
  [      {
         "name": "Suprise",
+        "color": "#986AD9",
         "children": [
           {
             "name": "Moved",
@@ -41,6 +42,7 @@
   
       {
         "name": "Love",
+        "color": "#DC68CE",
         "children": [
           {
             "name": "Enchanted",
@@ -81,6 +83,7 @@
       },
       {
         "name": "Joy",
+        "color": "#DC8D67",
         "children": [
           {
             "name": "Euphoric",
@@ -142,6 +145,7 @@
       },
       {
         "name": "Fear",
+        "color": "#6AB9D9",
         "children": [
           {
             "name": "Scared",
@@ -182,6 +186,7 @@
       },
       {
         "name": "Anger",
+        "color": "#DB6888",
         "children": [
           {
             "name": "Enraged",
@@ -222,6 +227,7 @@
       },
       {
         "name": "Sadness",
+        "color": "#6A7BD9",
         "children": [
           {
             "name": "Hurt",

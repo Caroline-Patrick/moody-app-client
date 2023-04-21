@@ -1,19 +1,17 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
 import AuthContext from "../AuthContext";
 import { LogFormComponent } from "./LogFormComponent";
-import { useNavigate } from 'react-router-dom';
 import emotionList from "../emotionList";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4plugins_sunburst from "@amcharts/amcharts4/plugins/sunburst";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import { Button } from '@mui/material';
+
 
 am4core.useTheme(am4themes_animated);
 
 export const EmotionWheel = () => {
   const { token, userId} = useContext(AuthContext);
   const chartRef = useRef(null);
-  const navigate = useNavigate();
   const [formVisible, setFormVisible] = useState(false);
   const [selectedChartData, setSelectedChartData] = useState(null);
 
@@ -22,10 +20,6 @@ export const EmotionWheel = () => {
     setSelectedChartData(data);
     setFormVisible(true);
 
-  };
-
-  const handleUserLogsClick = ()=>{
-    navigate("/userlogs")
   };
   
 
@@ -46,7 +40,7 @@ export const EmotionWheel = () => {
       chart.dataFields.name = "name";
       chart.dataFields.children = "children";
       chart.dataFields.color = "color";
-      chart.dataFields.desc = "desc";
+    
 
       let level0SeriesTemplate = new am4plugins_sunburst.SunburstSeries();
       level0SeriesTemplate.hiddenInLegend = false;
@@ -86,7 +80,6 @@ export const EmotionWheel = () => {
         token={token}
         userId={userId}
       />
-      <Button onClick={handleUserLogsClick}>View Logs</Button>
     </div>
   );
 };

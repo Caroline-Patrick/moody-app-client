@@ -55,6 +55,7 @@ const handleClick =(e) => {
           `http://localhost:5000/userLogs/create/${userId}/${moodName}`,
           {
             userNotes,
+            color: data.color,
           },
           {
             headers: {

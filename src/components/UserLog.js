@@ -64,7 +64,7 @@ export const UserLog = ({selectedLog, onBackClick }) => {
   } else {
   return (
     <Container>
-      <Card sx={{ maxWidth: 900, bgcolor: blueGrey[200], position: "relative" }}>
+      <Card sx={{ maxWidth: 900, bgcolor: selectedLog.color, position: "relative" }}>
         <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
           <EditIcon onClick={handleEditClick}/>
         </Box>

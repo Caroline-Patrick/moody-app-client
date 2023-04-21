@@ -8,6 +8,9 @@ import {EmotionWheel} from "./components/EmotionWheel";
 import { UserLog } from "./components/UserLog";
 
 import './App.css';
+import { ThemeProvider } from "@mui/material";
+import myTheme from "./theme/theme"
+
 
 function App() {
   const [token, setToken] =useState("");
@@ -17,6 +20,7 @@ function App() {
 
 
   return (
+    <ThemeProvider theme={myTheme}>
     <div className="App">
      <AuthContext.Provider value={{ token, userId, setToken, setUserId, signedIn, setSignedIn, userName, setUserName }}>
       <ResponsiveAppBar/>
@@ -29,6 +33,7 @@ function App() {
         </Routes>
         </AuthContext.Provider>
     </div>
+    </ThemeProvider>
   );
 }
 

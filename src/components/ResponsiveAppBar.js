@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,28 +7,39 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
 import { SigninComponent } from './SigninComponent';
+import mLogo from '../images/mLogoLongWhiteText.svg'
 import AuthContext from "../AuthContext";
 
 
 
+
 const pages = ['About', 'Sign In'];
-const settings = ['userlogs', 'Dashboard', 'Logout'];
+const signedInPages = ['Create New Log', 'Log History', 'Logout']
+
+const pageToPath = {
+  'About': 'about',
+  'Sign In': 'signin',
+  'Create New Log': 'log',
+  'Log History': 'userlogs',
+  'Logout': 'logout',
+};
+
 
 export const ResponsiveAppBar=()=> {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const { token, userId, signedIn, userName} = useContext(AuthContext);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const { token, userId, signedIn, setSignedIn, userName} = useContext(AuthContext);
 
   const navigate = useNavigate();
 
-
+const handleMenuItemClick = (event, page) => {
+  handleCloseNavMenu();
+  handleNavigation(page)
+}
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -44,34 +55,31 @@ export const ResponsiveAppBar=()=> {
     setAnchorElUser(null);
   };
 
-  const handleNavigation = (path) => {
-    navigate('/' + path);
+  const handleNavigation = (page) => {
+    if (page === 'Logout') {
+        setSignedIn(false)
+        navigate('/')
+      return;
+    }
+  
+    const path = pageToPath[page] || page.toLowerCase();
+    navigate("/" + path);
   };
+  
+
   
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
+          <div className="logo-image-container">
+          <img  className="logo-appbar" src={mLogo}/>
+          </div>
+
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            
+            {/* Actual hamburger button icon */}
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -87,12 +95,12 @@ export const ResponsiveAppBar=()=> {
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: 'bottom',
-                horizontal: 'left',
+                horizontal: 'right',
               }}
               keepMounted
               transformOrigin={{
                 vertical: 'top',
-                horizontal: 'left',
+                horizontal: 'right',
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
@@ -101,13 +109,14 @@ export const ResponsiveAppBar=()=> {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={(event)=>handleMenuItemClick(event, page)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          
+          {/* hamburger menu for mobile/small screens */}
           <Typography
             variant="h5"
             noWrap
@@ -124,52 +133,36 @@ export const ResponsiveAppBar=()=> {
               textDecoration: 'none',
             }}
           >
-            LOGO
+
           </Typography>
+          {!signedIn ? 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={(event)=>handleMenuItemClick(event, page)}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                {page}
+              </Button>
+            ))}
+          </Box> : <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {signedInPages.map((page) => (
+              <Button
+                key={page}
+                onClick={(event)=>handleMenuItemClick(event, page)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
               </Button>
             ))}
           </Box>
-
+}
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
            <Typography>{!signedIn ? <SigninComponent /> : `Welcome, ${userName}!`}</Typography> 
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
   )
-}
+};

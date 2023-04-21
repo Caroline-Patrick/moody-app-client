@@ -1,7 +1,6 @@
 import React, {useContext} from "react";
 import AuthContext from "../AuthContext";
-import {Card, CardHeader, Container, CardContent, Typography }from "@mui/material";
-import { blueGrey } from "@mui/material/colors";
+import {Button, Card, CardHeader, Container, CardContent }from "@mui/material";
 
 //change date + time into more readable format
 const formatDate = (createDate, createTime) => {
@@ -20,23 +19,22 @@ const formatDate = (createDate, createTime) => {
 };
 
 export const UserLogCardComponent = ({ log, onClick }) => {
-  const { token, userId} = useContext(AuthContext);
-  const handleClick = (selectedLog) => {
+  const handleClick = () => {
     onClick(log);
   };
 
   return (
     <Container>
       <Card
-        onClick={handleClick}
-        sx={{ maxWidth: 345, bgcolor: blueGrey[200] }}
+        
+        sx={{ maxWidth: 345, bgcolor: log.color }}
       >
         <CardHeader
           subheader={formatDate(log.createDate, log.createTime)} // Use formatDate to format the date and time
           title={`Mood: ${log.subsubMoodName}`}
         />
          <CardContent>
-          <Typography paragraph>See more</Typography>
+          <Button className= "log-history-button" onClick={handleClick}>See more</Button>
         </CardContent>
       </Card>
     </Container>
