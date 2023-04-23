@@ -31,7 +31,7 @@ const formatDate = (createDate, createTime) => {
   return new Intl.DateTimeFormat("en-US", options).format(date);
 };
 
-export const UserLog = ({ selectedLog, onBackClick }) => {
+export const UserLog = ({ selectedLog, onBackClick, setSuccessMessage}) => {
   const [editIsClicked, setEditIsClicked] = useState(false);
 
   const { token, userId } = useContext(AuthContext);
