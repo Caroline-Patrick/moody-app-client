@@ -35,7 +35,7 @@ export const UserLogsListComponent = ({ setSuccessMessage }) => {
       .catch((error) => {
         return error;
       });
-  }, [refreshData]);
+  }, [refreshData, token, userId]);
 
   //function to sort user logs in descending order
   const sortUserLogs = (logs) => {

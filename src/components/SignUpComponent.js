@@ -128,6 +128,7 @@ export const SignUpComponent = () => {
             <div className="image-container">
               <img
                 className="card-image"
+                alt="Three colorful, smiling and waving monsters with text Join the Moody Monsters"
                 src={moodyMonsters}
               />
             </div>

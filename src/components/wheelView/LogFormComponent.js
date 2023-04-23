@@ -25,7 +25,7 @@ export const LogFormComponent = ({
 
   const [description, setDescription] = useState("");
   const [userNotes, setUserNotes] = useState("");
-  const [formData, setFormData] = useState({
+  const [formData] = useState({
     subsubMoodName: log?.subsubMoodName || "",
     userNotes: log?.userNotes || "",
     logId: log?.logId || "",
@@ -45,7 +45,7 @@ export const LogFormComponent = ({
           setDescription(response.data[0].subSubMoodDesc);
         });
     }
-  }, [visible, moodName]);
+  }, [visible, moodName, token]);
 
   const handleClick = (e) => {
     e.preventDefault();

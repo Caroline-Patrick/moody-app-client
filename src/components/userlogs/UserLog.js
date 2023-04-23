@@ -33,7 +33,6 @@ const formatDate = (createDate, createTime) => {
 
 export const UserLog = ({ selectedLog, onBackClick }) => {
   const [editIsClicked, setEditIsClicked] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
 
   const { token, userId } = useContext(AuthContext);
 

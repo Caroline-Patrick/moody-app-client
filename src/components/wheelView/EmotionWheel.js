@@ -35,8 +35,6 @@ export const EmotionWheel = () => {
     if (emotionList) {
       const chart = am4core.create("chartdiv", am4plugins_sunburst.Sunburst);
 
-      var pieSeries = chart.series.push(new am4charts.PieSeries());
-
       chart.data = emotionList;
       chart.padding(0, 0, 0, 0);
       chart.radius = am4core.percent(100);
@@ -90,7 +88,7 @@ export const EmotionWheel = () => {
         chart.dispose();
       };
     }
-  }, [emotionList]);
+  });
 
   return (
     <div

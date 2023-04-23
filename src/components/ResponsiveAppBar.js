@@ -27,7 +27,6 @@ const pageToPath = {
 
 export const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
   const [showSigninComponent, setShowSigninComponent] = useState(false);
   const { signedIn, setSignedIn, userName } =
     useContext(AuthContext);
@@ -51,17 +50,12 @@ export const ResponsiveAppBar = () => {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
 
   const handleNavigation = (page) => {
     if (page === "Logout") {
@@ -81,6 +75,7 @@ export const ResponsiveAppBar = () => {
           <div className="logo-image-container">
             <img
               className="logo-appbar"
+              alt="Moody logo with blue smiling and waving monster cartoon"
               src={mLogo}
               onClick={()=>{navigate("/")}}
               style={{ cursor: "pointer" }}
