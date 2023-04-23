@@ -82,7 +82,8 @@ export const ResponsiveAppBar = () => {
             <img
               className="logo-appbar"
               src={mLogo}
-              onClick={()=>{navigate("/About")}}
+              onClick={()=>{navigate("/")}}
+              style={{ cursor: "pointer" }}
             />
           </div>
       <Box sx={{

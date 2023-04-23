@@ -4,7 +4,7 @@ import AuthContext from "./AuthContext";
 import { ResponsiveAppBar } from "./components/ResponsiveAppBar";
 import { LandingComponent } from "./components/About/LandingComponent";
 import { UserLogsListComponent } from "./components/userlogs/UserLogsListComponent";
-import {EmotionWheel} from "./components/EmotionWheel";
+import {EmotionWheel} from "./components/wheelView/EmotionWheel";
 import { UserLog } from "./components/userlogs/UserLog";
 
 import './App.css';

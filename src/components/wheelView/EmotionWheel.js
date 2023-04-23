@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
-import AuthContext from "../AuthContext";
+import AuthContext from "../../AuthContext";
 import { LogFormComponent } from "./LogFormComponent";
-import emotionList from "../emotionList";
+import emotionList from "../../emotionList.json";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4plugins_sunburst from "@amcharts/amcharts4/plugins/sunburst";

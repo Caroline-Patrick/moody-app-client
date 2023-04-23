@@ -15,7 +15,7 @@ export const SuccessForm = ({ message, setLogSubmitted, setSuccessMessage}) => {
   }
 
   return (
-    <Card>
+    <Card sx={{margin: '1rem'}}>
       <CardContent>
         <Typography
           variant="h6"

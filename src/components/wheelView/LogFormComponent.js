@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import AuthContext from '../AuthContext';
+import AuthContext from '../../AuthContext';
 import { Container, Button, TextField, Card, CardContent, Typography } from '@mui/material';
 
 

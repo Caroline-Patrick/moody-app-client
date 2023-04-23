@@ -5,7 +5,7 @@ import {Card, CardHeader, CardContent, Typography, Container, Button, Box }from 
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import { LogFormComponent } from "../LogFormComponent";
+import { LogFormComponent } from "../wheelView/LogFormComponent";
 
 //change date + time into more readable format
 const formatDate = (createDate, createTime) => {
@@ -83,7 +83,7 @@ export const UserLog = ({selectedLog, onBackClick }) => {
         color: 'white'
       }}>
         <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-          <EditIcon onClick={handleEditClick}/>
+          <EditIcon onClick={handleEditClick} style={{ cursor: "pointer" }} fontSize='large' sx={{margin: '1rem'}}/>
         </Box>
         <CardHeader
           subheader={formatDate(
@@ -106,9 +106,10 @@ export const UserLog = ({selectedLog, onBackClick }) => {
             right: 10,
           }}
         >
-          <DeleteIcon onClick={handleDeleteClick}/>
+          <DeleteIcon onClick={handleDeleteClick} fontSize='large' style={{ cursor: "pointer" }} sx={{margin: '1rem'}}/>
         </Box>
       </Card>
+      <br></br>
       <Button sx={{backgroundColor: 'white', color: "#210036"}} onClick={onBackClick}>Back to all logs</Button>
     </Container>
   );
