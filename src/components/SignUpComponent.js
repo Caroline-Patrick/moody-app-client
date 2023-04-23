@@ -29,7 +29,7 @@ export const SignUpComponent = () => {
     }
     setError(""); // Clear previous error messages
     axios
-      .post("http://localhost:5000/signup", {
+      .post("https://moody-app-server.vercel.app/signup", {
         firstName,
         lastName,
         email,

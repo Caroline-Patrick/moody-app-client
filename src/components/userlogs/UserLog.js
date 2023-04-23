@@ -43,7 +43,7 @@ export const UserLog = ({ selectedLog, onBackClick }) => {
 
   const handleDeleteClick = () => {
     axios
-      .delete(`http://localhost:5000/userLogs/${userId}/${selectedLog.logId}`, {
+      .delete(`https://moody-app-server.vercel.app/userLogs/${userId}/${selectedLog.logId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

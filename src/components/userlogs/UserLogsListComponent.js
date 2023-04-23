@@ -21,7 +21,7 @@ export const UserLogsListComponent = ({ setSuccessMessage }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/userLogs`, {
+      .get(`https://moody-app-server.vercel.app/userLogs`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -36,7 +36,7 @@ export const LogFormComponent = ({
   useEffect(() => {
     if (visible && moodName) {
       axios
-        .get(`http://localhost:5000/log/moods/tier3/${moodName}`, {
+        .get(`https://moody-app-server.vercel.app/log/moods/tier3/${moodName}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -62,7 +62,7 @@ export const LogFormComponent = ({
     if (data) {
       axios
         .post(
-          `http://localhost:5000/userLogs/create/${userId}/${moodName}`,
+          `https://moody-app-server.vercel.app/userLogs/create/${userId}/${moodName}`,
           {
             userNotes,
             color: data.color,
@@ -90,7 +90,7 @@ export const LogFormComponent = ({
 
     axios
       .put(
-        `http://localhost:5000/userLogs/${userId}/${formData.logId}`,
+        `https://moody-app-server.vercel.app/userLogs/${userId}/${formData.logId}`,
         {
           userNotes,
         },
