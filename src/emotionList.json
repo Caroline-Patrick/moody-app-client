@@ -1,5 +1,5 @@
  [      {
-        "name": "Suprise",
+        "name": "Surprise",
         "color": "#986AD9",
         "children": [
           {
@@ -48,7 +48,7 @@
             "name": "Enchanted",
             "children": [
               { "name": "Enthralled", "value": 1 },
-              { "name": "Raptuous", "value": 1 }
+              { "name": "Rapturous", "value": 1 }
             ]
           },
           {
@@ -83,7 +83,7 @@
       },
       {
         "name": "Joy",
-        "color": "#DC8D67",
+        "color": "#DE6800",
         "children": [
           {
             "name": "Euphoric",
@@ -145,7 +145,7 @@
       },
       {
         "name": "Fear",
-        "color": "#6AB9D9",
+        "color": "#5290A8",
         "children": [
           {
             "name": "Scared",
@@ -186,7 +186,7 @@
       },
       {
         "name": "Anger",
-        "color": "#DB6888",
+        "color": "#D13456",
         "children": [
           {
             "name": "Enraged",
@@ -227,7 +227,7 @@
       },
       {
         "name": "Sadness",
-        "color": "#6A7BD9",
+        "color": "#4B5799",
         "children": [
           {
             "name": "Hurt",

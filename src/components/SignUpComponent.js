@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import mBlackLogo from '../images/moodyLogoOG.svg'
+import moodyMonsters from '../images/moodyMonsters.svg'
 
 import {
   Container,
@@ -59,7 +59,7 @@ export const SignUpComponent = () => {
             )}
             <br></br>
            
-            <form onSubmit={handleClick}>
+            <form className="signup-form" onSubmit={handleClick}>
               <TextField
                 required
                 id="outlined-basic"
@@ -120,7 +120,7 @@ export const SignUpComponent = () => {
             
           </CardContent>
           <div className="image-container">
-          <img className="card-image" src={mBlackLogo} />
+          <img className="card-image" src={moodyMonsters} />
           </div>
         </div>
 

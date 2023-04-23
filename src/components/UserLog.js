@@ -25,6 +25,8 @@ const formatDate = (createDate, createTime) => {
 
 export const UserLog = ({selectedLog, onBackClick }) => {
   const [editIsClicked, setEditIsClicked] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+
   const { token, userId} = useContext(AuthContext);
 
   const handleEditClick = () => {
@@ -56,7 +58,10 @@ export const UserLog = ({selectedLog, onBackClick }) => {
         log={selectedLog}
         onCancel={() => setEditIsClicked(false)}
         editIsClicked={editIsClicked}
-        onHide={() => setEditIsClicked(false)}
+        onHide={() => {
+          setEditIsClicked(false)
+          setSuccessMessage("");
+        }}
         onUpdate={()=> onBackClick()}
       />
     );

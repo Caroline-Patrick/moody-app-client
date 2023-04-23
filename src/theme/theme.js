@@ -23,14 +23,19 @@ export const myTheme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         colorPrimary: {
-          backgroundColor: "#662E9B",
+          backgroundColor: "#480075",
         },
       },
     },
     MuiButton: {
       styleOverrides: {
         root: {
-          backgroundColor: "#000000",
+          color: "white",
+          backgroundColor: "#210036",
+          '&:hover': {
+            backgroundColor: '#8400D6',
+          },
+          marginRight: 15,
         }
       }
     }
@@ -39,3 +44,6 @@ export const myTheme = createTheme({
 });
 
 export default createTheme(myTheme);
+
+
+// backgroundColor: "#662E9B",

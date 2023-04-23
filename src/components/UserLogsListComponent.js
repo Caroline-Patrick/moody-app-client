@@ -4,7 +4,7 @@ import AuthContext from "../AuthContext";
 import { UserLogCardComponent } from "./UserLogCardComponent";
 import { UserLog } from "./UserLog";
 
-export const UserLogsListComponent = () => {
+export const UserLogsListComponent = ({ setSuccessMessage }) => {
   const { token, userId } = useContext(AuthContext);
   const [userLogs, setUserLogs] = useState([]);
   const [selectedLog, setSelectedLog] = useState(null);
@@ -30,8 +30,6 @@ export const UserLogsListComponent = () => {
         },
       })
       .then((response) => {
-        console.log("made it");
-        console.log(response);
         setUserLogs(response.data);
       })
       .catch((error) => {
@@ -39,27 +37,47 @@ export const UserLogsListComponent = () => {
       });
   }, [refreshData]);
 
+  //function to sort user logs in descending order
+  const sortUserLogs = (logs) => {
+    return logs.sort((a, b) => {
+      const dateTimeA = `${a.createDate}T${a.createTime}`;
+      const dateTimeB = `${b.createDate}T${b.createTime}`;
+      return dateTimeB.localeCompare(dateTimeA);
+    });
+  };
+
+  const sortedUserLogs = sortUserLogs(userLogs);
+
   if (selectedLog) {
-    return <UserLog selectedLog={selectedLog} onBackClick={handleBackClick} />;
+    return (
+      <UserLog
+        selectedLog={selectedLog}
+        onBackClick={handleBackClick}
+      />
+    );
   } else {
     return (
       <>
         <div className="userLog-container">
-          {userLogs.length > 0 ? (
+          {sortedUserLogs.length > 0 ? (
             <ul className="list">
-              {userLogs.map((log, index) => {
+              {sortedUserLogs.map((log, index) => {
                 return (
-                  <li className="log" key={`userlog-${index}`}>
+                  <li
+                    className="log"
+                    key={`userlog-${index}`}
+                  >
                     <UserLogCardComponent
                       log={log}
                       onClick={handleClick}
+                      setSuccessMessage={setSuccessMessage}
                     />
                   </li>
                 );
               })}
             </ul>
           ) : (
-            <p>No user logs found.</p>
+            <h1>No user logs found.</h1>
           )}
         </div>
       </>

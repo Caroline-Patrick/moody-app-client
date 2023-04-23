@@ -4,7 +4,7 @@ import AuthContext from '../AuthContext';
 import { Container, Button, TextField, Card, CardContent, Typography } from '@mui/material';
 
 
-export const LogFormComponent = ({ visible, data, onHide, log, onCancel, editIsClicked, onUpdate}) => {
+export const LogFormComponent = ({ visible, data, onHide, log, onCancel, editIsClicked, onUpdate, setSuccessMessage, setLogSubmitted}) => {
   const { token, userId} = useContext(AuthContext);
 
   const [description, setDescription] = useState('');
@@ -65,6 +65,9 @@ const handleClick =(e) => {
         )
         .then((response) => {
           console.log(response.data);
+          setLogSubmitted(true);
+          setSuccessMessage("Your mood has been logged successfully!");
+
         })
         .catch((error) => {
           console.log(error);
@@ -92,6 +95,9 @@ const handleClick =(e) => {
         .then((response) => {
           console.log(response.data);
           onUpdate();
+          setSuccessMessage("Log updated successfully!");
+          setLogSubmitted(true);
+
         })
         .catch((error) => {
           console.log(error);
@@ -130,6 +136,8 @@ const handleClick =(e) => {
           })}
           
         />
+        
+
         <br></br>
         <br></br>
         <div>
