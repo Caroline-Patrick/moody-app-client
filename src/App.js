@@ -3,9 +3,9 @@ import {Routes, Route} from 'react-router-dom';
 import AuthContext from "./AuthContext";
 import { ResponsiveAppBar } from "./components/ResponsiveAppBar";
 import { LandingComponent } from "./components/About/LandingComponent";
-import { UserLogsListComponent } from "./components/UserLogsListComponent";
+import { UserLogsListComponent } from "./components/userlogs/UserLogsListComponent";
 import {EmotionWheel} from "./components/EmotionWheel";
-import { UserLog } from "./components/UserLog";
+import { UserLog } from "./components/userlogs/UserLog";
 
 import './App.css';
 import { ThemeProvider } from "@mui/material";

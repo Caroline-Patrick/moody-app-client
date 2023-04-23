@@ -1,11 +1,11 @@
 import React, {useState, useContext} from "react";
 import axios from 'axios';
-import AuthContext from "../AuthContext";
+import AuthContext from '../../AuthContext';
 import {Card, CardHeader, CardContent, Typography, Container, Button, Box }from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import { LogFormComponent } from "./LogFormComponent";
+import { LogFormComponent } from "../LogFormComponent";
 
 //change date + time into more readable format
 const formatDate = (createDate, createTime) => {

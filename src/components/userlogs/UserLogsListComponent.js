@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import AuthContext from "../AuthContext";
+import AuthContext from "../../AuthContext";
 import { UserLogCardComponent } from "./UserLogCardComponent";
 import { UserLog } from "./UserLog";
 
