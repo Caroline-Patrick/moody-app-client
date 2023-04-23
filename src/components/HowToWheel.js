@@ -1,8 +1,9 @@
 import React from 'react'
+import { Typography, Card, Button } from '@mui/material'
 
-export const HowToWheel = () => {
+export const HowToWheel = ({setInstructionsVisible}) => {
   return (
-    <div><Card sx={{ padding: '1rem', width: '50%', borderRadius: '1rem' }}>
+    <div><Card sx={{ padding: '1rem', width: '94%' }}>
     <Typography variant="h6" gutterBottom>
       How to use the Mood Wheel:
     </Typography>
@@ -26,6 +27,7 @@ export const HowToWheel = () => {
         <li>The log history is displayed with the emotional color group, so at a glance, you can see what emotions you've been feeling over time</li>
       </ul>
     </Typography>
+    <Button onClick={()=>{setInstructionsVisible(false)}}>Close</Button>
   </Card></div>
   )
 }

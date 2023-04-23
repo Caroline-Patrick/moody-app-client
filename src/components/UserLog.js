@@ -76,10 +76,11 @@ export const UserLog = ({selectedLog, onBackClick }) => {
     }}>
       <Card sx={{
        
-       width: "90%",
+       width: "80%",
         marginTop: 5,
         bgcolor: selectedLog.color,
         position: "relative",
+        color: 'white'
       }}>
         <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
           <EditIcon onClick={handleEditClick}/>
@@ -90,9 +91,11 @@ export const UserLog = ({selectedLog, onBackClick }) => {
             selectedLog.createTime
           )}
           title={`Mood: ${selectedLog.subsubMoodName}`}
+          titleTypographyProps={{  color: "inherit", fontSize: 30 }} // Set title's color to inherit from Card color
+          subheaderTypographyProps={{ color: "inherit", fontSize: 20 }} // Set subheader's color to inherit from Card color
         />
         <CardContent>
-          <Typography paragraph>Notes: {selectedLog.userNotes}</Typography>
+          <Typography paragraph sx={{fontSize: 20}}>Notes: {selectedLog.userNotes}</Typography>
         </CardContent>
         <Box
           sx={{
@@ -106,7 +109,7 @@ export const UserLog = ({selectedLog, onBackClick }) => {
           <DeleteIcon onClick={handleDeleteClick}/>
         </Box>
       </Card>
-      <Button sx={{}} onClick={onBackClick}>Back to all logs</Button>
+      <Button sx={{backgroundColor: 'white', color: "#210036"}} onClick={onBackClick}>Back to all logs</Button>
     </Container>
   );
 };

@@ -40,9 +40,18 @@ h2 {
 
 .log-form-container {
   display:flex;
-  justify-content: center;
   align-items: center;
 }
+
+.log-form-initial {
+  justify-content: flex-start;
+}
+
+.log-form-edit {
+  justify-content: center;
+  width: 100%; 
+}
+
 
 .log {
   list-style: none;

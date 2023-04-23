@@ -61,7 +61,7 @@
           {
             "name": "Affectionate",
             "children": [
-              { "name": "Warmhearted", "value": 1 },
+              { "name": "Warm-hearted", "value": 1 },
               { "name": "Compassionate", "value": 1 }
             ]
           },

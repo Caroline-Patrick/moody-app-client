@@ -7,8 +7,9 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4plugins_sunburst from "@amcharts/amcharts4/plugins/sunburst";
 import * as am4plugins_sliceGrouper from "@amcharts/amcharts4/plugins/sliceGrouper";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import {Typography, Box} from "@mui/material"
+import { Typography, Box, Button} from "@mui/material";
 import { SuccessForm } from "./SuccessForm";
+import { HowToWheel } from "./HowToWheel";
 
 am4core.useTheme(am4themes_animated);
 
@@ -19,14 +20,17 @@ export const EmotionWheel = () => {
   const [selectedChartData, setSelectedChartData] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
   const [logSubmitted, setLogSubmitted] = useState(false);
-
-
+  const [instructionsVisible, setInstructionsVisible]=useState(false);
 
   const handleSliceClick = (event) => {
     const data = event.target.dataItem.dataContext;
     setSelectedChartData(data);
     setFormVisible(true);
   };
+
+  const handleInstructionsClick = () => {
+    setInstructionsVisible(true)
+  }
 
   useEffect(() => {
     if (emotionList) {
@@ -40,14 +44,14 @@ export const EmotionWheel = () => {
 
       chart.colors.step = 2;
       chart.fontSize = 18;
-      chart.fontFamily="roboto"
+      chart.fontFamily = "roboto";
 
       // Define data fields
       chart.dataFields.value = "value";
       chart.dataFields.name = "name";
       chart.dataFields.children = "children";
       chart.dataFields.color = "color";
-      chart.dataFields.fontWeight ="bold";
+      chart.dataFields.fontWeight = "bold";
 
       let level0SeriesTemplate = new am4plugins_sunburst.SunburstSeries();
       level0SeriesTemplate.hiddenInLegend = false;
@@ -82,8 +86,6 @@ export const EmotionWheel = () => {
       level2.slices.template.tooltipText = "";
       level2.slices.template.events.on("hit", handleSliceClick);
 
-
-
       chartRef.current = chart;
       return () => {
         chart.dispose();
@@ -94,31 +96,43 @@ export const EmotionWheel = () => {
   return (
     <div
       className="emotion-wheel-container"
-      style={{ display: "flex", flexDirection: "row" }}
+      style={{ display: "flex", 
+              flexDirection: "row", 
+              justifyContent: 'center',
+            alignItems: 'center'  }}
     >
       <div
         id="chartdiv"
-        style={{ width: "90%", height: "80vh" }}
-      ></div>
-      {!logSubmitted? <LogFormComponent
-  className="log-form-container"
-  visible={formVisible}
-  data={selectedChartData}
-  onHide={() => setFormVisible(false)}
-  token={token}
-  userId={userId}
-  setLogSubmitted={setLogSubmitted}
-  setSuccessMessage={setSuccessMessage}
-/>
- : (
-        <SuccessForm
-        message={successMessage}
-        setLogSubmitted={setLogSubmitted}
-        setSuccessMessage={setSuccessMessage}
-       />
+        style={{ width: "100%", height: "80vh" }}
+      >
 
-      )
-      }
+      </div>
+      <Box 
+      sx={{width: '50%', margin: '5vh', display:"flex", flexDirection: 'column', alignItems: 'center'}}>
+       
+        
+
+      {!logSubmitted ? (
+        <LogFormComponent
+          className="log-form-container"
+          visible={formVisible}
+          data={selectedChartData}
+          onHide={() => setFormVisible(false)}
+          token={token}
+          userId={userId}
+          setLogSubmitted={setLogSubmitted}
+          setSuccessMessage={setSuccessMessage}
+        />
+      ) : (
+        <SuccessForm
+          message={successMessage}
+          setLogSubmitted={setLogSubmitted}
+          setSuccessMessage={setSuccessMessage}
+        />
+      )}
+      {!instructionsVisible ? ( <Button onClick={handleInstructionsClick} sx={{backgroundColor:'white', color: '#210036'}}
+        >Show Instructions</Button>) : <HowToWheel setInstructionsVisible={setInstructionsVisible}/>}
+      </Box>
     </div>
   );
 };

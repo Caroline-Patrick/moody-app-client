@@ -18,9 +18,6 @@ export const LogFormComponent = ({ visible, data, onHide, log, onCancel, editIsC
 
   const moodName = log ? log.subsubMoodName : data ? data.name : "";
 
-   console.log(`Token: ${token}, userId: ${userId}, ${moodName}`)
-   console.log(`log: ${formData.subsubMoodName}, userId: ${userId}, ${moodName}`)
-
 
   
   useEffect(() => {
@@ -64,7 +61,6 @@ const handleClick =(e) => {
           }
         )
         .then((response) => {
-          console.log(response.data);
           setLogSubmitted(true);
           setSuccessMessage("Your mood has been logged successfully!");
 
@@ -93,7 +89,6 @@ const handleClick =(e) => {
           }
         )
         .then((response) => {
-          console.log(response.data);
           onUpdate();
           setSuccessMessage("Log updated successfully!");
           setLogSubmitted(true);
@@ -107,12 +102,14 @@ const handleClick =(e) => {
   };
 
   if (!visible) { 
-    {console.log("it's not visible")}
+    
     return null;
   }
 
   return (
-    <div className="log-form-container">
+    <div className={`log-form-container ${
+      editIsClicked ? "log-form-edit" : "log-form-initial"
+    }`}>
       <Container >
         <Card>
         <CardContent>
@@ -128,6 +125,7 @@ const handleClick =(e) => {
         <TextField
           id="outlined-multiline-static"
           label="What's happening?"
+          fullWidth
           multiline
           rows={4}
          defaultValue={formData.userNotes}
@@ -145,7 +143,7 @@ const handleClick =(e) => {
             Save
           </Button>
         
-          {onCancel && <button onClick={onCancel}>Cancel</button>}
+          {onCancel && <Button onClick={onCancel}>Cancel</Button>}
 
       
         </div>

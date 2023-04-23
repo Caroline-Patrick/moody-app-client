@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Paper, Typography, Card, styled } from '@mui/material';
-
+import { Button, Box, Paper, Typography, Card, styled } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 const StyledPaper = styled(Paper)({
   padding: '1rem',
   borderRadius: '1rem',
@@ -9,6 +9,9 @@ const StyledPaper = styled(Paper)({
 });
 
 export const IntroSection = () => {
+  
+const navigate = useNavigate()  
+
   return (
     <div className="intro-section">
       <Box
@@ -17,7 +20,7 @@ export const IntroSection = () => {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          minHeight: '100vh',
+          height: '90vh',
           backgroundImage: 'linear-gradient(to bottom right, #480075, #9a4a9f)',
           gap: '1rem',
         }}
@@ -32,7 +35,7 @@ export const IntroSection = () => {
             </Typography>
           </Box>
         </StyledPaper>
-       
+       <Button onClick={()=>{navigate("/signup")}}sx={{fontSize:20}}>Get Started!</Button>
       </Box>
     </div>
   );

@@ -23,6 +23,9 @@ export const AboutSection = () => {
     >
       <Paper
         sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-around',
           padding: '2rem',
           borderRadius: '1rem',
           backgroundColor: 'rgba(72, 0, 117, 0.9)',
