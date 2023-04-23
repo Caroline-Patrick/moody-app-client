@@ -1,6 +1,6 @@
-# Mood Tracker
+# Moody
 
-Mood Tracker is a web application designed to help users improve their emotional literacy. Inspired by Brené Brown's "Atlas of the Heart", the app allows users to track and analyze their emotions, fostering self-awareness and emotional understanding. Built using React on the frontend, the app connects to a backend powered by Node.js and Express. The Material-UI library provides a sleek and modern design.
+Moody is a web application designed to help users improve their emotional literacy. Inspired by Brené Brown's "Atlas of the Heart", the app allows users to track and analyze their emotions, fostering self-awareness and emotional understanding. Built using React on the frontend, the app connects to a backend powered by Node.js and Express. The Material-UI library provides a sleek and modern design.
 
 ## Features
 
