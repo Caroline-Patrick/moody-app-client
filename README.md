@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# Mood Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Mood Tracker is a web application designed to help users improve their emotional literacy. Inspired by Brené Brown's "Atlas of the Heart", the app allows users to track and analyze their emotions, fostering self-awareness and emotional understanding. Built using React on the frontend, the app connects to a backend powered by Node.js and Express. The Material-UI library provides a sleek and modern design.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Interactive Emotion Wheel for selecting emotions (powered by amCharts)
+- Customizable mood logs for tracking emotions, thoughts, and experiences
+- Visualization of mood data over time
+- User authentication and profile management
+- Integration with DictionaryAPI.com for emotion descriptions and definitions
+- Mobile-responsive design
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js (v14.x.x recommended)
+- npm (v6.x.x recommended)
+- MySQL (if running locally)
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
+```
+git clone https://github.com/yourusername/mood-tracker.git
+```
 
-### `npm run build`
+2. Install the required dependencies in the frontend and backend folders:
+```
+cd mood-tracker/frontend
+npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+cd ../backend
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Create a `.env` file in the `backend` directory with the following environment variables:
+```
+DB_HOST=<your_mysql_host>
+DB_USER=<your_mysql_user>
+DB_PASSWORD=<your_mysql_password>
+DB_DATABASE=<your_mysql_database>
+DB_PORT=<your_port>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+API_KEY_COLLEGIATE=<your_dictionaryapi.com_api_key>
+```
 
-### `npm run eject`
+4. Start the backend server:
+```
+cd backend
+npm run start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+5. Start the frontend development server:
+```
+cd frontend
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+6. Open your browser and navigate to `http://localhost:3000` to view the application.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Built With
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- [React](https://reactjs.org/)
+- [Node.js](https://nodejs.org/)
+- [Express](https://expressjs.com/)
+- [MySQL](https://www.mysql.com/)
+- [Material-UI](https://mui.com/)
+- [amCharts](https://www.amcharts.com/)
+- [DictionaryAPI.com](https://www.dictionaryapi.com/)
 
-## Learn More
+## Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Fork the repository on GitHub.
+2. Clone your forked repository to your local machine.
+3. Create a new branch for your feature or bug fix.
+4. Make your changes and commit them with a descriptive message.
+5. Push your branch to your fork on GitHub.
+6. Create a pull request to the original repository.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Acknowledgments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Brené Brown and her work on emotional literacy in "Atlas of the Heart"
+- Material-UI for providing a powerful and flexible styling library
+- amCharts for the interactive and dynamic emotion wheel
+- DictionaryAPI.com for providing emotion descriptions and definitions
+- The React and Node.js communities for their support and resources
