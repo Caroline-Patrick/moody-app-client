@@ -33,7 +33,7 @@ export const UserLogsListComponent = ({ setSuccessMessage }) => {
         setUserLogs(response.data);
       })
       .catch((error) => {
-        console.error(error);
+        return error;
       });
   }, [refreshData]);
 

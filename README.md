@@ -21,7 +21,7 @@ Moody is a web application designed to help users improve their emotional litera
 
 ### Installation
 
-1. Clone the repository:
+1. Clone the front-end and back-end repositories:
 ```
 git clone https://github.com/yourusername/mood-tracker.git
 ```

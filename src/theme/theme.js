@@ -3,7 +3,7 @@ import { createTheme } from "@mui/material";
 export const myTheme = createTheme({
   root: {
     display: "flex",
-  }, 
+  },
   typography: {
     fontFamily: "Lato, Arial",
     fontSize: 12,
@@ -32,18 +32,16 @@ export const myTheme = createTheme({
         root: {
           color: "white",
           backgroundColor: "#210036",
-          '&:hover': {
-            backgroundColor: '#8400D6',
+          "&:hover": {
+            backgroundColor: "#8400D6",
           },
           marginRight: 15,
-        }
-      }
-    }
+        },
+      },
+    },
   },
-  
 });
 
 export default createTheme(myTheme);
-
 
 // backgroundColor: "#662E9B",

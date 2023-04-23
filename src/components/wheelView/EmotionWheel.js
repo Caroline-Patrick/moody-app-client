@@ -5,9 +5,8 @@ import emotionList from "../../emotionList.json";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4plugins_sunburst from "@amcharts/amcharts4/plugins/sunburst";
-import * as am4plugins_sliceGrouper from "@amcharts/amcharts4/plugins/sliceGrouper";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import { Typography, Box, Button} from "@mui/material";
+import { Box, Button} from "@mui/material";
 import { SuccessForm } from "./SuccessForm";
 import { HowToWheel } from "./HowToWheel";
 

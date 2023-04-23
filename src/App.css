@@ -1,18 +1,17 @@
-
-
-html, body { 
-  height: 100%; 
+html,
+body {
+  height: 100%;
   margin: 0;
   padding: 0;
 }
 
 body {
   background-color: #210036;
-  background-image: radial-gradient( circle at bottom, white, transparent 70%);
+  background-image: radial-gradient(circle at bottom, white, transparent 70%);
   background-repeat: no-repeat;
   background-position: bottom;
   background-blend-mode: overlay;
-  color:aliceblue;
+  color: aliceblue;
 }
 
 .log-form-container {
@@ -20,17 +19,13 @@ body {
   height: 400px;
 }
 
- 
-
-
 h2 {
   align-items: center;
 }
 .list {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 5vh;
-  
 }
 
 .emotion-wheel-container {
@@ -39,7 +34,7 @@ h2 {
 }
 
 .log-form-container {
-  display:flex;
+  display: flex;
   align-items: center;
 }
 
@@ -49,13 +44,11 @@ h2 {
 
 .log-form-edit {
   justify-content: center;
-  width: 100%; 
+  width: 100%;
 }
-
 
 .log {
   list-style: none;
-
 }
 
 .signup-form-container {
@@ -63,25 +56,22 @@ h2 {
   justify-content: center;
   align-items: center;
   margin-top: 10vh;
-  
 }
 
 .signup-form {
   margin-top: 4vh;
 }
 
-
 .card-wrapper {
   margin-left: 8vh;
   display: flex;
 }
 
-
 .image-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1; 
+  flex: 1;
 }
 
 .card-image {
@@ -90,16 +80,16 @@ h2 {
 }
 
 .logo-appbar {
-  width: 150px; 
-  height: auto; 
+  width: 150px;
+  height: auto;
 }
 
 .log-history-button {
-  color: whitesmoke
+  color: whitesmoke;
 }
 
 .link {
-  color: white
+  color: white;
 }
 
 /* Change the color of the TextField label */

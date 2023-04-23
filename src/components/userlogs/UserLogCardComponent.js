@@ -1,5 +1,11 @@
 import React from "react";
-import {Button, Card, CardHeader, Container, CardContent, Typography }from "@mui/material";
+import {
+  Button,
+  Card,
+  CardHeader,
+  Container,
+  CardContent,
+} from "@mui/material";
 
 //change date + time into more readable format
 const formatDate = (createDate, createTime) => {
@@ -28,11 +34,15 @@ export const UserLogCardComponent = ({ log, onClick }) => {
         <CardHeader
           subheader={formatDate(log.createDate, log.createTime)}
           title={`Mood: ${log.subsubMoodName}`}
-          titleTypographyProps={{  color: "inherit", fontSize: 30 }} // Set title's color to inherit from Card color
-          subheaderTypographyProps={{ color: "inherit", fontSize:20}} // Set subheader's color to inherit from Card color
+          titleTypographyProps={{ color: "inherit", fontSize: 30 }} // Set title's color to inherit from Card color
+          subheaderTypographyProps={{ color: "inherit", fontSize: 20 }} // Set subheader's color to inherit from Card color
         ></CardHeader>
         <CardContent>
-          <Button className="log-history-button" onClick={handleClick} sx={{backgroundColor: 'white', color: "#210036"}}>
+          <Button
+            className="log-history-button"
+            onClick={handleClick}
+            sx={{ backgroundColor: "white", color: "#210036" }}
+          >
             See more
           </Button>
         </CardContent>

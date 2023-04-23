@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
-import moodyMonsters from '../images/moodyMonsters.svg'
+import { useNavigate } from "react-router-dom";
+import moodyMonsters from "../images/moodyMonsters.svg";
 
 import {
   Container,
@@ -21,8 +21,6 @@ export const SignUpComponent = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  
-
   const handleClick = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -31,9 +29,13 @@ export const SignUpComponent = () => {
     }
     setError(""); // Clear previous error messages
     axios
-      .post("http://localhost:5000/signup", { firstName, lastName, email, password })
+      .post("http://localhost:5000/signup", {
+        firstName,
+        lastName,
+        email,
+        password,
+      })
       .then((response) => {
-        console.log(response.data);
         navigate("/signin");
       })
       .catch((error) => {
@@ -44,88 +46,93 @@ export const SignUpComponent = () => {
         }
       });
   };
-  
 
   return (
     <div className="signup-form-container">
       <Container>
         <Card>
-        <div className="card-wrapper">
-          <CardContent className="card-content">
-          {error && (
-              <Typography color="error" align="center">
-                {error}
-              </Typography>
-            )}
-            <br></br>
-           
-            <form className="signup-form" onSubmit={handleClick}>
-              <TextField
-                required
-                id="outlined-basic"
-                label="First Name"
-                onChange={(e) => {
-                  setFirstName(e.target.value);
-                }}
-              />
-              <br></br> <br></br>
-              <TextField
-                required
-                id="outlined-basic"
-                label="Last Name"
-                onChange={(e) => {
-                  setLastName(e.target.value);
-                }}
-              />
-              <br></br> <br></br>
-              <TextField
-                required
-                id="outlined-basic"
-                label="Email Address"
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
-              <br></br> <br></br>
-              <TextField
-                required
-                id="outlined-basic"
-                label="Password"
-                type="password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
-              <br></br> <br></br>
-              <TextField
-                required
-                id="outlined-basic"
-                label="Confirm Password"
-                type="password"
-                onChange={(e) => {
-                  setConfirmPassword(e.target.value);
-                }}
-              />
-              <br></br>
-              <br></br>
-              <div>
-                <Button
-                  variant="contained"
-                  type="submit"
+          <div className="card-wrapper">
+            <CardContent className="card-content">
+              {error && (
+                <Typography
+                  color="error"
+                  align="center"
                 >
-                  Create Account
-                </Button>
-              </div>
-            </form>
-            
-          </CardContent>
-          <div className="image-container">
-          <img className="card-image" src={moodyMonsters} />
-          </div>
-        </div>
+                  {error}
+                </Typography>
+              )}
+              <br></br>
 
+              <form
+                className="signup-form"
+                onSubmit={handleClick}
+              >
+                <TextField
+                  required
+                  id="outlined-basic"
+                  label="First Name"
+                  onChange={(e) => {
+                    setFirstName(e.target.value);
+                  }}
+                />
+                <br></br> <br></br>
+                <TextField
+                  required
+                  id="outlined-basic"
+                  label="Last Name"
+                  onChange={(e) => {
+                    setLastName(e.target.value);
+                  }}
+                />
+                <br></br> <br></br>
+                <TextField
+                  required
+                  id="outlined-basic"
+                  label="Email Address"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
+                <br></br> <br></br>
+                <TextField
+                  required
+                  id="outlined-basic"
+                  label="Password"
+                  type="password"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
+                <br></br> <br></br>
+                <TextField
+                  required
+                  id="outlined-basic"
+                  label="Confirm Password"
+                  type="password"
+                  onChange={(e) => {
+                    setConfirmPassword(e.target.value);
+                  }}
+                />
+                <br></br>
+                <br></br>
+                <div>
+                  <Button
+                    variant="contained"
+                    type="submit"
+                  >
+                    Create Account
+                  </Button>
+                </div>
+              </form>
+            </CardContent>
+            <div className="image-container">
+              <img
+                className="card-image"
+                src={moodyMonsters}
+              />
+            </div>
+          </div>
         </Card>
-       
       </Container>
     </div>
   );
