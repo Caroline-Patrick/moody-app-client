@@ -26,10 +26,11 @@ export const SigninComponent = () => {
               setUserId(response.data.user.userId);
               setUserName(response.data.user.firstName);
             });
-          return Promise.resolve().then(()=>{
+          
             setSignedIn(true)
-          navigate("/log")})
-        }}
+          navigate("/log")}
+        }
+      
       >
         <TextField
           required
