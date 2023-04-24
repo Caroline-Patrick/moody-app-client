@@ -20,14 +20,15 @@ export const SigninComponent = () => {
           e.preventDefault();
 
           axios
-            .post("https://moody-app-server-p21qg25gr-caroline-patrick.vercel.app/signin", { email, password })
+            .post("https://moody-app-server.vercel.app/signin", { email, password })
             .then((response) => {
               setToken(response.data.token);
               setUserId(response.data.user.userId);
               setUserName(response.data.user.firstName);
             });
-          setSignedIn(true);
-          navigate("/log");
+          return Promise.resolve().then(()=>{
+            setSignedIn(true)
+          navigate("/log")})
         }}
       >
         <TextField
