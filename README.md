@@ -9,7 +9,7 @@ Moody is a web application designed to help users improve their emotional litera
 - Visualization of mood data over time
 - User authentication and profile management
 - Integration with DictionaryAPI.com for emotion descriptions and definitions
-- Mobile-responsive design
+
  
 ## Built With
 
