@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
-import AppBar, { Box, Toolbar, IconButton, Typography, Menu, MenuIcon, Container, Button, MenuItem } from "@mui/material";
+import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Button, MenuItem } from "@mui/material";
+import {Menu as MenuIcon} from '@mui/icons-material'
 import { useNavigate } from "react-router-dom";
 import { SigninComponent } from "./SigninComponent";
 import mLogo from "../images/mLogoLongWhiteText.svg";
