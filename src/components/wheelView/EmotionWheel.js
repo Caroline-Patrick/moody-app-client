@@ -34,14 +34,16 @@ export const EmotionWheel = () => {
   useEffect(() => {
     if (emotionList) {
       var chart = am4core.create("chartdiv", am4charts.TreeMap);
+      am4core.useTheme(am4themes_animated);
+
       chart.data = emotionList;
 
       chart.maxLevels = 1;
-      
-      // chart.padding(0, 0, 0, 0);
-      // chart.radius = am4core.percent(100);
+
+      chart.padding(0, 0, 0, 0);
+      chart.radius = am4core.percent(100);
       chart.colors.step = 2;
-      chart.fontSize = 18;
+      chart.fontSize = 30;
       chart.fontFamily = "Roboto";
 
       // Define data fields
@@ -51,113 +53,88 @@ export const EmotionWheel = () => {
       chart.dataFields.color = "color";
       chart.dataFields.fontWeight = "bold";
 
-      let level0 = chart.seriesTemplates.create("0");
-      let level0_bullet = level0.bullets.push(new am4charts.LabelBullet());
+      const level0 = chart.seriesTemplates.create("0");
+      const level0_bullet = level0.bullets.push(new am4charts.LabelBullet());
       level0_bullet.locationY = 0.5;
       level0_bullet.locationX = 0.5;
       level0_bullet.label.text = "{name}";
-     
-      var level0_column = level0.columns.template;
-level0_column.column.cornerRadius(10, 10, 10, 10);
-level0_column.fillOpacity = 0.8;
-level0_column.stroke = am4core.color("#fff");
-level0_column.strokeWidth = 5;
-level0_column.strokeOpacity = 1;
-level0_column.tooltipText = "";
 
-  
 
-      var level1 = chart.seriesTemplates.create("1");
-      let level1_bullet = level1.bullets.push(new am4charts.LabelBullet());
+      const level0_column = level0.columns.template;
+      level0_column.column.cornerRadius(10, 10, 10, 10);
+      level0_column.fillOpacity = 1;
+      level0_column.stroke = am4core.color("#210036");
+      level0_column.strokeWidth = 5;
+      level0_column.strokeOpacity = 1;
+      level0_column.tooltipText = "";
+
+      const level1 = chart.seriesTemplates.create("1");
+      const level1_bullet = level1.bullets.push(new am4charts.LabelBullet());
       level1_bullet.locationY = 0.5;
       level1_bullet.locationX = 0.5;
       level1_bullet.label.text = "{name}";
 
-      var level1_column = level1.columns.template;
+      const level1_column = level1.columns.template;
       level1_column.column.cornerRadius(10, 10, 10, 10);
-      level1_column.fillOpacity = 0.8;
-      level1_column.stroke = am4core.color("#fff");
+      level1_column.fillOpacity = 1;
+      level1_column.stroke = am4core.color("#210036");
       level1_column.strokeWidth = 5;
       level1_column.strokeOpacity = 1;
       level1_column.tooltipText = "";
 
-
-
-      var level2 = chart.seriesTemplates.create("2");
-      let level2_bullet = level2.bullets.push(new am4charts.LabelBullet());
+      const level2 = chart.seriesTemplates.create("2");
+      const level2_bullet = level2.bullets.push(new am4charts.LabelBullet());
       level2_bullet.locationY = 0.5;
       level2_bullet.locationX = 0.5;
       level2_bullet.label.text = "{name}";
 
-      var level3 = chart.seriesTemplates.create("3");
-      let level3_bullet = level3.bullets.push(new am4charts.LabelBullet());
+      const level2_column = level2.columns.template;
+      level2_column.column.cornerRadius(5, 5, 5, 5);
+      level2_column.fillOpacity = 1;
+      level2_column.stroke = am4core.color("#210036");
+      level2_column.strokeWidth = 5;
+      level2_column.strokeOpacity = 1;
+      level2_column.tooltipText = "";
+
+      const level3 = chart.seriesTemplates.create("3");
+      const level3_bullet = level3.bullets.push(new am4charts.LabelBullet());
       level3_bullet.locationY = 0.5;
       level3_bullet.locationX = 0.5;
       level3_bullet.label.text = "{name}";
 
-      var level4 = chart.seriesTemplates.create("4");
-      let level4_bullet = level4.bullets.push(new am4charts.LabelBullet());
+      const level3_column = level3.columns.template;
+      level3_column.column.cornerRadius(10, 10, 10, 10);
+      level3_column.fillOpacity = 1;
+      level3_column.stroke = am4core.color("#210036");
+      level3_column.strokeWidth = 5;
+      level3_column.strokeOpacity = 1;
+      level3_column.tooltipText = "";
+      level3_column.events.on("hit", handleSliceClick)
+
+      const level4 = chart.seriesTemplates.create("4");
+      const level4_bullet = level4.bullets.push(new am4charts.LabelBullet());
       level4_bullet.locationY = 0.5;
       level4_bullet.locationX = 0.5;
       level4_bullet.label.text = "{name}";
 
+      const level4_column = level4.columns.template;
+      level4_column.column.cornerRadius(10, 10, 10, 10);
+      level4_column.fillOpacity = 1;
+      level4_column.stroke = am4core.color("#210036");
+      level4_column.strokeWidth = 5;
+      level4_column.strokeOpacity = 1;
+      level4_column.tooltipText = "";
+      
+
       /* Navigation bar */
-chart.homeText = "TOP";
-chart.navigationBar = new am4charts.NavigationBar();
+      chart.homeText = "TOP";
+      chart.navigationBar = new am4charts.NavigationBar();
 
       return () => {
         chart.dispose();
       };
     }
   }, []);
-
-// useEffect(() => {
-//   if (emotionList) {
-//     let chart = am4core.create("chartdiv", am4plugins_sunburst.Sunburst);
-//     chart.data = emotionList;
-//     chart.padding(0, 0, 0, 0);
-//     chart.radius = am4core.percent(100);
-//     chart.colors.step = 2;
-//     chart.fontSize = 18;
-//     chart.fontFamily = "Roboto";
-
-//     // Define data fields
-//     chart.dataFields.value = "value";
-//     chart.dataFields.name = "name";
-//     chart.dataFields.children = "children";
-//     chart.dataFields.color = "color";
-//     chart.dataFields.fontWeight = "bold";
-
-//     var level0 = chart.seriesTemplates.create("0");
-//     var level1 = chart.seriesTemplates.create("1");
-//     var level2 = chart.seriesTemplates.create("2");
-
-//     // Set radius for each level to create a more pie-chart like visual
-//     level0.radius = am4core.percent(30);
-//     level1.radius = am4core.percent(60);
-//     level2.radius = am4core.percent(90);
-
-//     // Hide labels for levels 0 and 1
-//     level0.labels.template.text = "";
-//     level1.labels.template.text = "";
-//     // Show labels only for level 2
-//     level2.labels.template.text = "{name}";
-//     level2.labels.template.fontFamily = "Roboto";
-//     level2.labels.template.fontSize = 15;
-//     level2.labels.template.fill = am4core.color("#FFFFFF");
-//     level2.slices.template.tooltipText = "";
-//     level2.slices.template.events.on("hit", handleSliceClick);
-
-//     // Enable breadcrumbs
-//     chart.homeText = "<";
-
-//     chartRef.current = chart;
-
-//     return () => {
-//       chart.dispose();
-//     };
-//   }
-// }, []);
 
 
   return (
