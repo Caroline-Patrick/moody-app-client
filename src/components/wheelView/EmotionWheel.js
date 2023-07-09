@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import AuthContext from "../../AuthContext";
 import { LogFormComponent } from "./LogFormComponent";
 import emotionList from "../../emotionList.json";
@@ -6,20 +6,18 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { SuccessForm } from "./SuccessForm";
-import { HowToWheel } from "./HowToWheel";
+
 
 am4core.useTheme(am4themes_animated);
 
 export const EmotionWheel = () => {
   const { token, userId } = useContext(AuthContext);
-  const chartRef = useRef(null);
   const [formVisible, setFormVisible] = useState(false);
   const [selectedChartData, setSelectedChartData] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
   const [logSubmitted, setLogSubmitted] = useState(false);
-  const [instructionsVisible, setInstructionsVisible] = useState(false);
 
   const handleSliceClick = (event) => {
     const data = event.target.dataItem.dataContext;
@@ -27,9 +25,6 @@ export const EmotionWheel = () => {
     setFormVisible(true);
   };
 
-  const handleInstructionsClick = () => {
-    setInstructionsVisible(true);
-  };
 
   useEffect(() => {
     if (emotionList) {
@@ -124,6 +119,7 @@ export const EmotionWheel = () => {
       level4_column.strokeWidth = 5;
       level4_column.strokeOpacity = 1;
       level4_column.tooltipText = "";
+      level4_column.events.on("hit", handleSliceClick)
       
 
       /* Navigation bar */
@@ -151,15 +147,7 @@ export const EmotionWheel = () => {
         id="chartdiv"
         style={{ width: "100%", height: "80vh" }}
       ></div>
-      <Box
-        sx={{
-          width: "50%",
-          margin: "5vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
+      <Box  >
         {!logSubmitted ? (
           <LogFormComponent
             className="log-form-container"
@@ -177,16 +165,6 @@ export const EmotionWheel = () => {
             setLogSubmitted={setLogSubmitted}
             setSuccessMessage={setSuccessMessage}
           />
-        )}
-        {!instructionsVisible ? (
-          <Button
-            onClick={handleInstructionsClick}
-            sx={{ backgroundColor: "white", color: "#210036" }}
-          >
-            Show Instructions
-          </Button>
-        ) : (
-          <HowToWheel setInstructionsVisible={setInstructionsVisible} />
         )}
       </Box>
     </div>

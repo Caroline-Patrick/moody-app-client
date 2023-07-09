@@ -57,6 +57,12 @@ export const LogFormComponent = ({
     }
   };
 
+
+  const handleCancelClick = (e) => {
+    e.preventDefault();
+    onHide(); 
+  }
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (data) {
@@ -155,6 +161,7 @@ export const LogFormComponent = ({
                 >
                   Save
                 </Button>
+                <Button onClick={handleCancelClick}>Cancel</Button>
 
                 {onCancel && <Button onClick={onCancel}>Cancel</Button>}
               </div>
