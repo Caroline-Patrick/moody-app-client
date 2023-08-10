@@ -21,6 +21,9 @@ Moody is a web application designed to help users improve their emotional litera
 - [amCharts](https://www.amcharts.com/)
 - [DictionaryAPI.com](https://www.dictionaryapi.com/)
 
+## Moody's backend can be found here
+- [Backend repo on Github](https://github.com/Caroline-Patrick/moody-app-server)
+
 
 
 
